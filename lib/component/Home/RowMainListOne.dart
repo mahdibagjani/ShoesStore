@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:originalpalv2/component/Button/BlackButton.dart';
+import 'package:originalpalv2/utils/AppConfig.dart';
+
+
 
 class RowMainListOne extends StatefulWidget {
+  String image;
+  String text;
+  String title;
+  String subTitle;
+  List<String> buttonTextList;
+
   @override
   _RowMainListOneState createState() => _RowMainListOneState();
+
+  RowMainListOne({@required this.title,@required this.subTitle,@required this.image,@required this.text,@required this.buttonTextList});
 }
 
 class _RowMainListOneState extends State<RowMainListOne> {
@@ -12,7 +23,7 @@ class _RowMainListOneState extends State<RowMainListOne> {
     return Material(
       child: SingleChildScrollView(
         child: Container(
-          width: MediaQuery.of(context).size.width,
+          width: AppConfig.screenWidth,
           color: Colors.white,
           child: Stack(
             children: [
@@ -25,7 +36,7 @@ class _RowMainListOneState extends State<RowMainListOne> {
                   Container(
                       padding: EdgeInsets.only(left: 60, right: 10, bottom: 15),
                       child: Text(
-                        'NITE JOGGER',
+                        widget.title,
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w600,
@@ -34,21 +45,21 @@ class _RowMainListOneState extends State<RowMainListOne> {
                   Container(
                       padding: EdgeInsets.only(left: 60, right: 10, bottom: 15),
                       child: Text(
-                        "",
+                        widget.subTitle,
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w600,
                             fontSize: 18),
                       )),
                   Container(
-                    height: MediaQuery.of(context).size.width,
-                    width: MediaQuery.of(context).size.width,
+                    height: AppConfig.screenWidth,
+                    width: AppConfig.screenWidth,
                         child: Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.fill,
                               image: NetworkImage(
-                                  "https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/nlNL/Images/originals_ss19_nitejogger_drop3_clp_glass_emailsignup_tablet_tcm204-340874.jpg"),
+                                  widget.image),
                             ),
                           ),
                         ),
@@ -57,22 +68,12 @@ class _RowMainListOneState extends State<RowMainListOne> {
                     padding:
                         EdgeInsets.only(left: 60, right: 30, top: 20, bottom: 20),
                     child: Text(
-                        "I'm open for collaborations. I can made for you great web designs, portfolios, landing pages and much others at good price."),
+                        widget.text),
                   ),
-                  for(var i =0;i<=2;i++)
+                  for(var i =0;i<widget.buttonTextList.length;i++)
+
                     Container(
-                      color: Colors.black,
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.only(left: 60, right: 40,bottom:12),
-                      padding: EdgeInsets.only(left: 16, top: 12, bottom: 12),
-                      child: Text(
-                        "EXPLORE MORE ${i}-->",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 20),
-                      ),
-                    ),
+                        margin: EdgeInsets.only(left: 60,right: 30),child: BlackButton(text:" ${widget.buttonTextList[i]}-->")),
                   SizedBox(
                     height: 15,
                   )

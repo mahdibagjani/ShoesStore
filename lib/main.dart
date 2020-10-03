@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:originalpalv2/ui/HomePage.dart';
-import 'package:originalpalv2/ui/StaticSticky.dart';
-import 'package:originalpalv2/ui/Stic.dart';
+import 'package:originalpalv2/bloc/States/MainPageViewState.dart';
+import 'package:originalpalv2/ui/Home/HomePage.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<MainPageViewState>(
+        create: (controller) => MainPageViewState(),
+      )
+    ],
+    child: MaterialApp(
+      home: HomePage(),
+    ),
+  ));
 }
 
 class MyApp extends StatelessWidget {

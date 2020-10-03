@@ -12,7 +12,7 @@ class PlayPauseOverlay extends StatefulWidget {
 
 class _PlayPauseOverlayState extends State<PlayPauseOverlay> {
 
-  bool playPause = false;
+  static bool PLAY_PAUSE = false;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -36,16 +36,16 @@ class _PlayPauseOverlayState extends State<PlayPauseOverlay> {
         GestureDetector(
           onTap: () {
 
-            if (playPause==false) {
+            if (PLAY_PAUSE==false) {
               widget.controller.play();
-              print('played1'+playPause.toString());
-              playPause =true;
-              print('played2'+playPause.toString());
-            } else if(playPause==true){
+              print('played1'+PLAY_PAUSE.toString());
+              PLAY_PAUSE =true;
+              print('played2'+PLAY_PAUSE.toString());
+            } else if(PLAY_PAUSE==true){
               widget.controller.pause();
-              print('paused1'+playPause.toString());
-              playPause = false;
-              print('paused2'+playPause.toString());
+              print('paused1'+PLAY_PAUSE.toString());
+              PLAY_PAUSE = false;
+              print('paused2'+PLAY_PAUSE.toString());
             }
           },
         ),
