@@ -12,7 +12,7 @@ class OriginalPalProvider {
     Map<String, String> params = {
       'key': 'adidas',
     };
-    final response = await dio.get("https://originalpal.com/panel/api/tests",
+    final response = await dio.get("",
         queryParameters: params);
     print("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*" +response.data.toString());
 
